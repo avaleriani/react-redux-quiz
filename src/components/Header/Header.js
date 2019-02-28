@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 
 /**
- * @param {{ timer: string, currentScore: number, highestScore: number}} props
+ * @param {{ timeLeft: number, currentScore: number, highestScore: number}} props
  * @return HTMLElement
  */
 const Header = (props) => (

@@ -8,6 +8,6 @@ export default combineReducers({
   questionLoading,
   questionError,
   highestScore: updateHighestScore,
-  score: calculateCurrentScore,
+  currentScore: calculateCurrentScore,
   step: advanceStep
 });

@@ -7,7 +7,7 @@ import LostGame from "../../components/LostGame/LostGame";
 import { fetchQuestion } from "../../redux/actions/questionAction";
 import styles from "./styles.module.css";
 import WinGame from "../../components/WinGame/WinGame";
-import { resetStep } from "../../redux/actions/gameAction";
+import { resetGame } from "../../redux/actions/gameAction";
 
 const levelAmount = 1; //todo: move to env
 /**
@@ -40,7 +40,7 @@ class GameContainer extends Component {
 
   endGame() {
     clearInterval(this.timer);
-    this.props.resetStep();
+    this.props.resetGame();
     this.setState({
       timeLeft: 30,
       isGameEnded: true
@@ -49,7 +49,7 @@ class GameContainer extends Component {
 
   restartGame() {
     clearInterval(this.timer);
-    this.props.resetStep();
+    this.props.resetGame();
     this.setState({
       timeLeft: 30,
       isGameEnded: false
@@ -88,13 +88,15 @@ class GameContainer extends Component {
   render() {
     return (
       <div className={styles['game-container']}>
-        <Header timeLeft={this.state.timeLeft}/>
+        <Header timeLeft={this.state.timeLeft} currentScore={this.props.currentScore}
+                highestScore={this.props.highestScore}/>
         <div className={styles['game-screen']}>
           {this.props.hasErrored ? <div>ERROR</div> : null}
           {this.props.isLoading ? <div>LOADING</div> : null}
           {!this.props.hasErrored && !this.props.isLoading && !this.state.isGameEnded ? this.renderScreen(this.props) : null}
           {this.state.isGameEnded ? <LostGame restartGame={this.startTimer}/> : null}
         </div>
+        <button onClick={this.restartGame}>reset</button>
       </div>
     );
   }
@@ -105,14 +107,16 @@ const mapStateToProps = (state) => {
     question: state.question,
     hasErrored: state.questionError,
     isLoading: state.questionLoading,
-    step: state.step
+    step: state.step,
+    currentScore: state.currentScore,
+    highestScore: state.highestScore
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchQuestion: (url, currentStep) => dispatch(fetchQuestion(url, currentStep)),
-    resetStep: () => dispatch(resetStep())
+    resetGame: () => dispatch(resetGame())
   };
 };
 

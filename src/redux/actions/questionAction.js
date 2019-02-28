@@ -42,7 +42,7 @@ export const fetchQuestion = (url, currentStep) => {
         }
       })
       .catch((error) => {
-        dispatch(questionError(true))
+        dispatch(questionError(true));
         console.error(error);
       });
   };
