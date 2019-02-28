@@ -1,18 +1,18 @@
 import { ADVANCE_STEP, CALCULATE_CURRENT_SCORE, UPDATE_HIGHEST_SCORE } from "../types";
 
-export const advanceStep = (state = false, action) => {
+export const advanceStep = (state = 0, action) => {
   switch(action.type) {
     case ADVANCE_STEP:
-      return action.step;
+      return action.step + 1;
     default:
       return state;
   }
 };
 
-export const calculateCurrentScore = (state = false, action) => {
+export const calculateCurrentScore = (state = 0, action) => {
   switch(action.type) {
     case CALCULATE_CURRENT_SCORE:
-      return action.isLoading;
+      return action.score;
     default:
       return state;
   }

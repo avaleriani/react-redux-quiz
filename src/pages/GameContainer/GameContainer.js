@@ -6,7 +6,9 @@ import Question from "../../components/Question/Question";
 import EndGame from "../../components/EndGame/EndGame";
 import { fetchQuestion } from "../../redux/actions/questionAction";
 import styles from "./styles.module.css";
+import { advanceStep } from "../../redux/actions/gameAction";
 
+const levelAmount = 30;
 /**
  * @param {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
@@ -28,16 +30,17 @@ const GameContainer = (props) => {
  * @return HTMLElement
  */
 const renderScreen = (props) => {
-  if (props.step === 0) {
-    return <Welcome startGame={() => {
-      props.fetchQuestion("http://jservice.io/api/random ")
-    }}
-    />;
-  } else if (props.step === 30) {
-    return <EndGame/>;
-  } else {
-    const question = props.questions;
-    return <Question question={question}/>;
+  switch(props.step) {
+    case 0:
+      return <Welcome startGame={() => {
+        // props.dispatch()
+        props.fetchQuestion("http://jservice.io/api/random ")
+      }}/>;
+    case levelAmount:
+      return <EndGame/>;
+    default:
+      const question = props.questions;
+      return <Question question={question}/>;
   }
 };
 
@@ -53,7 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchQuestion: (url) => dispatch(fetchQuestion(url))
+    fetchQuestion: (url) => dispatch(fetchQuestion(url)),
+    nextStep: (currentStep) => dispatch(advanceStep(currentStep))
   };
 };
 

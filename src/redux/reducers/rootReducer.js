@@ -5,11 +5,11 @@ import timerReducer from './timerReducer';
 
 
 export default combineReducers({
-  questionSuccess,
+  questions: questionSuccess,
   questionLoading,
   questionError,
-  updateHighestScore,
-  calculateCurrentScore,
-  advanceStep,
+  highestScore: updateHighestScore,
+  score: calculateCurrentScore,
+  step: advanceStep,
   timer: timerReducer
 });
