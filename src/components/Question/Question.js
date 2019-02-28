@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./styles.module.css";
+import { cleanHtmlText } from "../../Utils/utils";
 
 /**
  * @param {{ question: Object, onSubmit: function}} props
@@ -25,7 +26,9 @@ class Question extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    if (this.isAnswerRight(this.props.question.answer, this.state.answer)) {
+    //Sometimes the answer come wrapped in HTML.
+    const correctAnswer = cleanHtmlText(this.props.question.answer);
+    if (this.isAnswerCorrect(correctAnswer, this.state.answer)) {
       this.setState({
         isWrong: false
       });
@@ -37,12 +40,12 @@ class Question extends Component {
     }
   };
 
-  isAnswerRight(rightAnswer, answer) {
-    return rightAnswer.toLowerCase() === answer.toLowerCase();
+  isAnswerCorrect(correctAnswer, answer) {
+    return correctAnswer.toLowerCase() === answer.toLowerCase();
   }
 
   render() {
-    return (
+    return this.props.question ? (
       <form onSubmit={this.handleSubmit}>
         <div className={styles['question']}>
           <label>QUESTION</label>
@@ -59,7 +62,7 @@ class Question extends Component {
         <input type="submit" value="Submit"/>
         {this.state.isWrong ? <div className={styles['is-wrong']}>Wrong answer</div> : null}
       </form>
-    );
+    ) : null;
   }
 }
 

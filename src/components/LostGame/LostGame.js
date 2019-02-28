@@ -5,11 +5,13 @@ import styles from "./styles.module.css";
  * @param {{restartGame: function}} props
  * @return HTMLElement
  */
-const EndGame = (props) => (
+const LostGame = (props) => (
   <div>
-    Game ended
+    <span role="img" aria-label="party-emoji">🐐</span>
+    You lost
+    <span role="img" aria-label="party-emoji">🐐</span>
     <button onClick={props.restartGame}>Restart</button>
   </div>
 );
 
-export default EndGame;
+export default LostGame;
