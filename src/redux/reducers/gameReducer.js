@@ -3,7 +3,7 @@ import { ADVANCE_STEP, CALCULATE_CURRENT_SCORE, UPDATE_HIGHEST_SCORE } from "../
 export const advanceStep = (state = 0, action) => {
   switch(action.type) {
     case ADVANCE_STEP:
-      return action.step + 1;
+      return state + 1;
     default:
       return state;
   }

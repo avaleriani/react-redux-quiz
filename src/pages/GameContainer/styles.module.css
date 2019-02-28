@@ -5,6 +5,8 @@
 .game-screen {
     display: flex;
     height: 100%;
-    margin: auto;
-    color: #ffffff;
+    margin: 30px auto 0 auto;
+    color: #282c34;
+    min-height: 300px;
+    width: 200px;
 }

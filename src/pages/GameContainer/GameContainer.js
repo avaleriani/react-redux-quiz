@@ -6,20 +6,20 @@ import Question from "../../components/Question/Question";
 import EndGame from "../../components/EndGame/EndGame";
 import { fetchQuestion } from "../../redux/actions/questionAction";
 import styles from "./styles.module.css";
-import { advanceStep } from "../../redux/actions/gameAction";
 
-const levelAmount = 30;
+const levelAmount = 30; //todo: move to env
 /**
  * @param {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
  */
 const GameContainer = (props) => {
-  console.log(props)
   return (
     <div className={styles['game-container']}>
       <Header timer={props.timer.value}/>
       <div className={styles['game-screen']}>
-        {renderScreen(props)}
+        {props.isError ? <div>ERROR</div> : null}
+        {props.isLoading ? <div>LOADING</div> : null}
+        {!props.isError && !props.isLoading ? renderScreen(props) : null}
       </div>
     </div>
   );
@@ -33,14 +33,13 @@ const renderScreen = (props) => {
   switch(props.step) {
     case 0:
       return <Welcome startGame={() => {
-        // props.dispatch()
-        props.fetchQuestion("http://jservice.io/api/random ")
+        props.fetchQuestion("http://jservice.io/api/random", props.step) //todo: move to env
       }}/>;
     case levelAmount:
       return <EndGame/>;
     default:
-      const question = props.questions;
-      return <Question question={question}/>;
+      const question = props.questions[props.questions.length - 1];
+      return question ? <Question question={question}/> : null;
   }
 };
 
@@ -56,8 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchQuestion: (url) => dispatch(fetchQuestion(url)),
-    nextStep: (currentStep) => dispatch(advanceStep(currentStep))
+    fetchQuestion: (url, currentStep) => dispatch(fetchQuestion(url, currentStep))
   };
 };
 
