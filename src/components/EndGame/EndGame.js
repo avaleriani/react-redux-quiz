@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./styles.module.css";
 
 /**
- * @param {Object} props
+ * @param {{restartGame: function}} props
  * @return HTMLElement
  */
 const EndGame = (props) => (
   <div>
     Game ended
-    <button>Restart</button>
+    <button onClick={props.restartGame}>Restart</button>
   </div>
 );
 

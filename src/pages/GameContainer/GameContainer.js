@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from '../../components/Header/Header';
 import Welcome from "../../components/Welcome/Welcome";
@@ -12,42 +12,81 @@ const levelAmount = 30; //todo: move to env
  * @param {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
  */
-const GameContainer = (props) => {
-  return (
-    <div className={styles['game-container']}>
-      <Header timer={props.timer.value}/>
-      <div className={styles['game-screen']}>
-        {props.isError ? <div>ERROR</div> : null}
-        {props.isLoading ? <div>LOADING</div> : null}
-        {!props.isError && !props.isLoading ? renderScreen(props) : null}
-      </div>
-    </div>
-  );
-};
+class GameContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeLeft: 30,
+      isGameEnded: false
+    };
 
-/**
- * @param {Object} props
- * @return HTMLElement
- */
-const renderScreen = (props) => {
-  switch(props.step) {
-    case 0:
-      return <Welcome startGame={() => {
-        props.fetchQuestion("http://jservice.io/api/random", props.step) //todo: move to env
-      }}/>;
-    case levelAmount:
-      return <EndGame/>;
-    default:
-      const question = props.questions[props.questions.length - 1];
-      return question ? <Question question={question} onSubmit={() => {
-        props.fetchQuestion("http://jservice.io/api/random", props.step) //todo: move to env
-      }}/> : null;
+    this.tick = this.tick.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    // this.restartTimer = this.restartTimer.bind(this);
   }
-};
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  startTimer() {
+    clearInterval(this.timer);
+    this.setState({ timeLeft: 30, isGameEnded: false });
+    this.timer = setInterval(this.tick, 1000);
+  }
+
+  endGame() {
+    clearInterval(this.timer);
+    this.setState({
+      timeLeft: 30,
+      isGameEnded: true
+    });
+  }
+
+  tick() {
+    if (this.state.timeLeft > 0) {
+      this.setState(prevState => ({
+        timeLeft: prevState.timeLeft - 1
+      }));
+    } else {
+      this.endGame();
+    }
+  }
+
+  renderScreen(props) {
+    const fetchNextQuestion = () => {
+      props.fetchQuestion("http://jservice.io/api/random", props.step); //todo: move to env
+      this.startTimer();
+    };
+
+    switch(props.step) {
+      case 0:
+        return <Welcome startGame={fetchNextQuestion}/>;
+      case levelAmount:
+        return <EndGame restartGame={this.startTimer}/>;
+      default:
+        const question = props.questions[props.questions.length - 1];
+        return question ? <Question question={question} onSubmit={fetchNextQuestion}/> : null;
+    }
+  }
+
+  render() {
+    return (
+      <div className={styles['game-container']}>
+        <Header timeLeft={this.state.timeLeft}/>
+        <div className={styles['game-screen']}>
+          {this.props.isError ? <div>ERROR</div> : null}
+          {this.props.isLoading ? <div>LOADING</div> : null}
+          {!this.props.isError && !this.props.isLoading && !this.state.isGameEnded ? this.renderScreen(this.props) : null}
+          {this.state.isGameEnded ? <EndGame restartGame={this.startTimer}/> : null}
+        </div>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
-    timer: state.timer,
     questions: state.questions,
     hasErrored: state.questionError,
     isLoading: state.questionLoading,

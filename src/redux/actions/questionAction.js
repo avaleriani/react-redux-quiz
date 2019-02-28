@@ -1,5 +1,4 @@
 import { ADVANCE_STEP, FETCH_QUESTION_ERROR, FETCH_QUESTION_LOADING, FETCH_QUESTION_SUCCESS } from "../types";
-import { timerStart } from "./timerAction";
 
 export const questionError = (status) => ({ type: FETCH_QUESTION_ERROR, hasErrored: status });
 export const questionLoading = (status) => ({ type: FETCH_QUESTION_LOADING, isLoading: status });
@@ -21,7 +20,6 @@ export const fetchQuestion = (url, currentStep) => {
       .then((question) => {
         dispatch(advanceStep(currentStep));
         dispatch(questionSuccess(question));
-        dispatch(timerStart());
       })
       .catch(() => dispatch(questionError(true)));
   };

@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import styles from "./styles.module.css";
 
 /**
- * @param {{ question: string, onSubmit: function}} props
+ * @param {{ question: Object, onSubmit: function}} props
  * @return HTMLElement
  */
 class Question extends Component {
   constructor() {
     super();
     this.state = {
-      answer: ''
+      answer: '',
+      isWrong: false
     };
 
     this.onTextUpdate = this.onTextUpdate.bind(this);
@@ -24,8 +25,21 @@ class Question extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.onSubmit(this.props.question.answer, this.state.answer)
+    if (this.isAnswerRight(this.props.question.answer, this.state.answer)) {
+      this.setState({
+        isWrong: false
+      });
+      this.props.onSubmit(this.props.question.answer, this.state.answer)
+    } else {
+      this.setState({
+        isWrong: true
+      });
+    }
   };
+
+  isAnswerRight(rightAnswer, answer) {
+    return rightAnswer.toLowerCase() === answer.toLowerCase();
+  }
 
   render() {
     return (
@@ -40,9 +54,10 @@ class Question extends Component {
           </div>
         </div>
         <div className={styles['answer']}>
-          <textarea onChange={this.onTextUpdate}/>
+          <input type="text" onChange={this.onTextUpdate} autoFocus/>
         </div>
         <input type="submit" value="Submit"/>
+        {this.state.isWrong ? <div className={styles['is-wrong']}>Wrong answer</div> : null}
       </form>
     );
   }

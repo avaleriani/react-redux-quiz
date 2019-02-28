@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
  */
 const Header = (props) => (
   <div className={styles['header']}>
-    {/*<div>{props.timer}</div>*/}
+    <div>{props.timeLeft}</div>
     <div>{props.currentScore}</div>
     <div>{props.highestScore}</div>
   </div>
