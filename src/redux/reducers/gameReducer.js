@@ -21,7 +21,7 @@ export const advanceStep = (state = 0, action) => {
 export const calculateCurrentScore = (state = 0, action) => {
   switch(action.type) {
     case CALCULATE_CURRENT_SCORE:
-      return state + Math.pow(2, action.step);
+      return action.step > 0 ? state + Math.pow(2, action.step - 1) : 0;
     case RESET_CURRENT_SCORE:
       return 0;
     default:

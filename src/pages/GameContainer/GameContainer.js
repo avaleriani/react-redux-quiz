@@ -40,7 +40,6 @@ class GameContainer extends Component {
 
   endGame() {
     clearInterval(this.timer);
-    this.props.resetGame();
     this.setState({
       timeLeft: 30,
       isGameEnded: true
@@ -96,7 +95,7 @@ class GameContainer extends Component {
           {!this.props.hasErrored && !this.props.isLoading && !this.state.isGameEnded ? this.renderScreen(this.props) : null}
           {this.state.isGameEnded ? <LostGame restartGame={this.startTimer}/> : null}
         </div>
-        <button onClick={this.restartGame}>reset</button>
+        <button onClick={this.restartGame}>Reset Game</button>
       </div>
     );
   }
