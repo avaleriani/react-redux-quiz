@@ -39,7 +39,9 @@ const renderScreen = (props) => {
       return <EndGame/>;
     default:
       const question = props.questions[props.questions.length - 1];
-      return question ? <Question question={question}/> : null;
+      return question ? <Question question={question} onSubmit={() => {
+        props.fetchQuestion("http://jservice.io/api/random", props.step) //todo: move to env
+      }}/> : null;
   }
 };
 
