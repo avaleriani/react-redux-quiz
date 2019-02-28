@@ -1,0 +1,10 @@
+.game-container {
+    width: 100%;
+}
+
+.game-screen {
+    display: flex;
+    height: 100%;
+    margin: auto;
+    color: #ffffff;
+}

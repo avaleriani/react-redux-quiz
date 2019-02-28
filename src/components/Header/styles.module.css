@@ -1,0 +1,6 @@
+.header {
+    display: flex;
+    color: #ffffff;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.75);
+}
