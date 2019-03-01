@@ -9,7 +9,6 @@ import styles from "./styles.module.css";
 import WinGame from "../../components/WinGame/WinGame";
 import { resetGame } from "../../redux/actions/gameAction";
 
-const levelAmount = 2; //todo: move to env
 /**
  * @type {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
@@ -69,14 +68,14 @@ class GameContainer extends Component {
 
   renderScreen(props) {
     const fetchNextQuestion = () => {
-      props.fetchQuestion("http://jservice.io/api/random", props.step); //todo: move to env
+      props.fetchQuestion(`${process.env.REACT_APP_API_URL}api/random`, props.step);
       this.startTimer();
     };
 
     switch(props.step) {
       case 0:
         return <Welcome startGame={fetchNextQuestion}/>;
-      case levelAmount + 1:
+      case process.env.REACT_APP_AMOUNT_OF_LEVELS + 1:
         clearInterval(this.timer);
         return <WinGame restartGame={this.restartGame}/>;
       default:
