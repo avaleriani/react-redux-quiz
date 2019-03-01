@@ -4,13 +4,13 @@ import Header from '../../components/Header/Header';
 import Welcome from "../../components/Welcome/Welcome";
 import Question from "../../components/Question/Question";
 import LostGame from "../../components/LostGame/LostGame";
-import { fetchQuestion } from "../../redux/actions/questionAction";
-import styles from "./styles.module.css";
 import WinGame from "../../components/WinGame/WinGame";
-import { resetGame } from "../../redux/actions/gameAction";
+import { fetchQuestion } from "../../redux/actions/questionAction";
+import { resetGame, userAnswerState } from "../../redux/actions/gameAction";
+import styles from "./styles.module.css";
 
 /**
- * @type {{ timer: number, step: number, onSubmit: function}} props
+ * @type {{timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
  */
 class GameContainer extends Component {
@@ -68,8 +68,16 @@ class GameContainer extends Component {
 
   renderScreen(props) {
     const fetchNextQuestion = () => {
-      props.fetchQuestion(`${process.env.REACT_APP_API_URL}api/random`, props.step);
-      this.startTimer();
+      if (!props.userAnswerState) {
+        this.endGame();
+      } else {
+        props.fetchQuestion(`${process.env.REACT_APP_API_URL}api/random`, props.step);
+        this.startTimer();
+      }
+    };
+
+    const updateUserAnswerState = (state) => {
+      props.setUserAnswerState(state)
     };
 
     switch(props.step) {
@@ -79,7 +87,9 @@ class GameContainer extends Component {
         clearInterval(this.timer);
         return <WinGame restartGame={this.restartGame}/>;
       default:
-        return <Question question={props.question} onSubmit={fetchNextQuestion}/>;
+        return <Question question={props.question}
+                         onSubmit={fetchNextQuestion}
+                         userAnswerState={updateUserAnswerState}/>;
     }
   }
 
@@ -108,14 +118,16 @@ const mapStateToProps = (state) => {
     step: state.step,
     currentScore: state.currentScore,
     highestScore: state.highestScore,
-    roundPoints: state.roundPoints
+    roundPoints: state.roundPoints,
+    userAnswerState: state.userAnswerState
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchQuestion: (url, currentStep) => dispatch(fetchQuestion(url, currentStep)),
-    resetGame: () => dispatch(resetGame())
+    resetGame: () => dispatch(resetGame()),
+    setUserAnswerState: (state) => dispatch(userAnswerState(state))
   };
 };
 

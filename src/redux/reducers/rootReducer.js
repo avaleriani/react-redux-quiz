@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { questionError, questionSuccess, questionLoading, alreadyAskedQuestions } from './questionReducer';
-import { advanceStep, calculateCurrentScore, updateHighestScore, calculateRoundPoints } from "./gameReducer";
+import { advanceStep, calculateCurrentScore, updateHighestScore, calculateRoundPoints, userAnswerState } from "./gameReducer";
 
 export default combineReducers({
   askedQuestions: alreadyAskedQuestions,
@@ -10,5 +10,6 @@ export default combineReducers({
   highestScore: updateHighestScore,
   currentScore: calculateCurrentScore,
   roundPoints: calculateRoundPoints,
-  step: advanceStep
+  step: advanceStep,
+  userAnswerState: userAnswerState
 });

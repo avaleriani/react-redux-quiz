@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { cleanHtmlText } from "../../Utils/utils";
 
 /**
- * @param {{ question: Object, onSubmit: function}} props
+ * @param {{question: Object, onSubmit: function, userAnswerState: function}} props
  * @return HTMLElement
  */
 class Question extends Component {
@@ -37,6 +37,7 @@ class Question extends Component {
       this.setState({
         isWrong: true
       });
+      this.props.userAnswerState(false);
     }
   };
 

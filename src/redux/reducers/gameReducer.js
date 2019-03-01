@@ -1,7 +1,7 @@
 import {
   ADVANCE_STEP, UPDATE_HIGHEST_SCORE,
   CALCULATE_CURRENT_SCORE, CALCULATE_ROUND_POINTS,
-  RESET_CURRENT_SCORE, RESET_ROUND_POINTS, RESET_STEP
+  RESET_CURRENT_SCORE, RESET_ROUND_POINTS, RESET_STEP, USER_ANSWER_STATE
 } from "../types";
 import { calculateScore } from "../../Utils/utils";
 
@@ -41,8 +41,16 @@ export const calculateRoundPoints = (state = 0, action) => {
 export const updateHighestScore = (state = 0, action) => {
   switch(action.type) {
     case UPDATE_HIGHEST_SCORE:
-      console.log(action)
       return action.score;
+    default:
+      return state;
+  }
+};
+
+export const userAnswerState = (state = true, action) => {
+  switch(action.type) {
+    case USER_ANSWER_STATE:
+      return action.answerState;
     default:
       return state;
   }
