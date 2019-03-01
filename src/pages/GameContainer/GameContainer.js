@@ -11,7 +11,7 @@ import { resetGame } from "../../redux/actions/gameAction";
 
 const levelAmount = 2; //todo: move to env
 /**
- * @param {{ timer: number, step: number, onSubmit: function}} props
+ * @type {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
  */
 class GameContainer extends Component {

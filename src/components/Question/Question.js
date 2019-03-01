@@ -40,6 +40,11 @@ class Question extends Component {
     }
   };
 
+  /**
+   * @type {string} correctAnswer
+   * @type {string} answer
+   * @return HTMLElement
+   */
   isAnswerCorrect(correctAnswer, answer) {
     return correctAnswer.toLowerCase() === answer.toLowerCase();
   }

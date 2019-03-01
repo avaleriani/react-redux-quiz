@@ -11,6 +11,9 @@ export const questionLoading = (status) => ({ type: FETCH_QUESTION_LOADING, isLo
 export const questionSuccess = (question) => ({ type: FETCH_QUESTION_SUCCESS, question });
 export const alreadyAskedQuestions = (questionId) => ({ type: SAVE_ALREADY_ASKED_QUESTIONS, questionId });
 
+/**
+ * @type {function} fetchQuestion
+ */
 export const fetchQuestion = (url, currentStep) => {
   return (dispatch, getState) => {
     dispatch(questionLoading(true));

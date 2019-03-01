@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 
 /**
- * @param {Object} props
+ * @param {{startGame: function}} props
  * @return HTMLElement
  */
 const Welcome = (props) => (

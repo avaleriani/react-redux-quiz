@@ -19,11 +19,22 @@ export const resetStep = () => ({ type: RESET_STEP });
  * @return Object
  */
 export const calculateCurrentScore = (step) => ({ type: CALCULATE_CURRENT_SCORE, step });
+/**
+ * @param { number} step
+ * @return Object
+ */
 export const calculateRoundPoints = (step) => ({ type: CALCULATE_ROUND_POINTS, step });
-export const resetRoundPoints = (step) => ({ type: RESET_ROUND_POINTS, step });
+export const resetRoundPoints = () => ({ type: RESET_ROUND_POINTS });
 export const resetCurrentScore = () => ({ type: RESET_CURRENT_SCORE });
+/**
+ * @param { number} score
+ * @return Object
+ */
 export const updateHighestScore = (score) => ({ type: UPDATE_HIGHEST_SCORE, score });
 
+/**
+ * @type {function} fetchQuestion
+ */
 export const resetGame = () => {
   return (dispatch) => {
     dispatch(resetStep());
