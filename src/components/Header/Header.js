@@ -2,14 +2,27 @@ import React from "react";
 import styles from "./styles.module.css";
 
 /**
- * @param {{ timeLeft: number, currentScore: number, highestScore: number}} props
+ * @param {{ roundPoints: number, timeLeft: number, currentScore: number, highestScore: number}} props
  * @return HTMLElement
  */
 const Header = (props) => (
   <div className={styles['header']}>
-    <div>{props.timeLeft}</div>
-    <div>{props.currentScore}</div>
-    <div>{props.highestScore}</div>
+    <div>
+      <span>Time left: </span>
+      <span>{props.timeLeft}</span>
+    </div>
+    <div>
+      <span>Current score: </span>
+      <span>{props.currentScore}</span>
+    </div>
+    <div>
+      <span>Highest score:</span>
+      <span>{props.highestScore}</span>
+    </div>
+    <div>
+      <span>Round points:</span>
+      <span>{props.roundPoints}</span>
+    </div>
   </div>
 );
 

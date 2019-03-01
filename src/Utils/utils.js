@@ -4,3 +4,7 @@ export const cleanHtmlText = (text) => {
   div.innerHTML = text;
   return div.textContent || div.innerText || "";
 };
+
+export const calculateScore = (base) => (
+  Math.pow(2, base)
+);

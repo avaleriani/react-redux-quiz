@@ -4,8 +4,7 @@ import {
   FETCH_QUESTION_SUCCESS,
   SAVE_ALREADY_ASKED_QUESTIONS
 } from "../types";
-import { calculateCurrentScore, advanceStep } from "../actions/gameAction";
-import { updateHighestScore } from "./gameAction";
+import { calculateCurrentScore, advanceStep, calculateRoundPoints, updateHighestScore } from "./gameAction";
 
 export const questionError = (status) => ({ type: FETCH_QUESTION_ERROR, hasErrored: status });
 export const questionLoading = (status) => ({ type: FETCH_QUESTION_LOADING, isLoading: status });
@@ -25,7 +24,7 @@ export const fetchQuestion = (url, currentStep) => {
       })
       .then((response) => response.json())
       .then((questionArr) => {
-        const { askedQuestions, highestScore, currentScore } = getState();
+        const { askedQuestions, highestScore, currentScore, roundPoints } = getState();
         const question = questionArr[0];
 
         //Validate if the current id was already asked
@@ -33,11 +32,12 @@ export const fetchQuestion = (url, currentStep) => {
           fetchQuestion(url, currentStep);
         } else {
           if (currentScore >= highestScore) {
-            dispatch(updateHighestScore(currentStep));
+            dispatch(updateHighestScore(currentScore + roundPoints));
           }
           dispatch(alreadyAskedQuestions(question.id));
           dispatch(advanceStep(currentStep));
           dispatch(calculateCurrentScore(currentStep));
+          dispatch(calculateRoundPoints(currentStep));
           dispatch(questionSuccess(question));
         }
       })

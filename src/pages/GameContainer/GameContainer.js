@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 import WinGame from "../../components/WinGame/WinGame";
 import { resetGame } from "../../redux/actions/gameAction";
 
-const levelAmount = 1; //todo: move to env
+const levelAmount = 2; //todo: move to env
 /**
  * @param {{ timer: number, step: number, onSubmit: function}} props
  * @return HTMLElement
@@ -88,12 +88,12 @@ class GameContainer extends Component {
     return (
       <div className={styles['game-container']}>
         <Header timeLeft={this.state.timeLeft} currentScore={this.props.currentScore}
-                highestScore={this.props.highestScore}/>
+                highestScore={this.props.highestScore} roundPoints={this.props.roundPoints}/>
         <div className={styles['game-screen']}>
           {this.props.hasErrored ? <div>ERROR</div> : null}
           {this.props.isLoading ? <div>LOADING</div> : null}
           {!this.props.hasErrored && !this.props.isLoading && !this.state.isGameEnded ? this.renderScreen(this.props) : null}
-          {this.state.isGameEnded ? <LostGame restartGame={this.startTimer}/> : null}
+          {this.state.isGameEnded ? <LostGame restartGame={this.restartGame}/> : null}
         </div>
         <button onClick={this.restartGame}>Reset Game</button>
       </div>
@@ -108,7 +108,8 @@ const mapStateToProps = (state) => {
     isLoading: state.questionLoading,
     step: state.step,
     currentScore: state.currentScore,
-    highestScore: state.highestScore
+    highestScore: state.highestScore,
+    roundPoints: state.roundPoints
   };
 };
 
