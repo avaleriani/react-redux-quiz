@@ -23,7 +23,7 @@ to the first call of the `/random` endpoint and just make the whole game with lo
 
 - Type checking is done via js docs and typescript with IDE support.
 
-- The endpoint is not always reliable, somethings it returns questions without text. More validation needed.
+- The endpoint is not always reliable, somethings it returns questions without text. More validation is needed. If no question is displayed please reload the page.
 
 - TODO: Save user highest score into localstorage.
  

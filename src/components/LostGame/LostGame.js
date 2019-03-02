@@ -10,7 +10,7 @@ const LostGame = (props) => (
   <div className={styles['lost']}>
     <div className={styles['lost-text']}>
       <span role="img" aria-label="cross-emoji">❌</span>
-      <div>Game over </div>
+      <span>Game over </span>
       <span role="img" aria-label="cross-emoji"> ❌</span>
       <br/>
       <div>Your score: {props.score}</div>
