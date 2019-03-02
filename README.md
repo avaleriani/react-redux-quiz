@@ -25,6 +25,8 @@ to the first call of the `/random` endpoint and just make the whole game with lo
 
 - The endpoint is not always reliable, somethings it returns questions without text. More validation is needed. If no question is displayed please reload the page.
 
+- The endpoint currently defined on .env file is behind a proxy website because the certificate is invalid(issued to *.herokuapp.com) and gh-pages works under https only without a custom domain. 
+
 - TODO: Save user highest score into localstorage.
  
 <hr> 
