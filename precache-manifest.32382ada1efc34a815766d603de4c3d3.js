@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/react-redux-quiz/static/js/runtime~main.d2a3c1bb.js"
   },
   {
-    "revision": "4392d289be00f994b526",
-    "url": "/react-redux-quiz/static/js/main.4392d289.chunk.js"
+    "revision": "cf4cf7c011adc9526beb",
+    "url": "/react-redux-quiz/static/js/main.cf4cf7c0.chunk.js"
   },
   {
     "revision": "d9d9cc250e94b7576261",
     "url": "/react-redux-quiz/static/js/2.d9d9cc25.chunk.js"
   },
   {
-    "revision": "4392d289be00f994b526",
-    "url": "/react-redux-quiz/static/css/main.e61de3ca.chunk.css"
+    "revision": "cf4cf7c011adc9526beb",
+    "url": "/react-redux-quiz/static/css/main.05d4c523.chunk.css"
   },
   {
-    "revision": "fbf652489def1ef2fcca3ecaf2f66842",
+    "revision": "070aa2815c7364c1bafea603463c9220",
     "url": "/react-redux-quiz/index.html"
   }
 ];

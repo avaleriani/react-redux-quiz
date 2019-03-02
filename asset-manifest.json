@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-redux-quiz/static/css/main.e61de3ca.chunk.css",
-  "main.js": "/react-redux-quiz/static/js/main.4392d289.chunk.js",
-  "main.js.map": "/react-redux-quiz/static/js/main.4392d289.chunk.js.map",
+  "main.css": "/react-redux-quiz/static/css/main.05d4c523.chunk.css",
+  "main.js": "/react-redux-quiz/static/js/main.cf4cf7c0.chunk.js",
+  "main.js.map": "/react-redux-quiz/static/js/main.cf4cf7c0.chunk.js.map",
   "runtime~main.js": "/react-redux-quiz/static/js/runtime~main.d2a3c1bb.js",
   "runtime~main.js.map": "/react-redux-quiz/static/js/runtime~main.d2a3c1bb.js.map",
   "static/js/2.d9d9cc25.chunk.js": "/react-redux-quiz/static/js/2.d9d9cc25.chunk.js",
   "static/js/2.d9d9cc25.chunk.js.map": "/react-redux-quiz/static/js/2.d9d9cc25.chunk.js.map",
   "index.html": "/react-redux-quiz/index.html",
-  "precache-manifest.651bb708ba1c1180d9a715e25b21ec5a.js": "/react-redux-quiz/precache-manifest.651bb708ba1c1180d9a715e25b21ec5a.js",
+  "precache-manifest.32382ada1efc34a815766d603de4c3d3.js": "/react-redux-quiz/precache-manifest.32382ada1efc34a815766d603de4c3d3.js",
   "service-worker.js": "/react-redux-quiz/service-worker.js",
-  "static/css/main.e61de3ca.chunk.css.map": "/react-redux-quiz/static/css/main.e61de3ca.chunk.css.map"
+  "static/css/main.05d4c523.chunk.css.map": "/react-redux-quiz/static/css/main.05d4c523.chunk.css.map"
 }
