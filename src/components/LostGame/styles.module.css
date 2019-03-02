@@ -1,0 +1,12 @@
+.lost {
+    display: flex;
+    flex-direction: column;
+}
+
+.lost-text {
+    border: 2px solid #ff0000;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 54px;
+    font-size: 1.2rem;
+}

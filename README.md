@@ -19,12 +19,14 @@
 
 ### NOTES
 - I used the provided endpoint but the logic could be simplified by adding `?count=30` 
-to the first call to the `/random` endpoint and just make the whole game with local state.
+to the first call of the `/random` endpoint and just make the whole game with local state.
 
 - Type checking is done via js docs and typescript with IDE support.
 
-- TODO: Save user highest score into localstorage.
+- The endpoint is not always reliable, somethings it returns questions without text. More validation needed.
 
+- TODO: Save user highest score into localstorage.
+ 
 <hr> 
 
 Your task is to write a quiz app using the api available at http://jservice.io.

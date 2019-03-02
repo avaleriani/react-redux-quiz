@@ -85,11 +85,11 @@ class GameContainer extends Component {
     switch(props.step) {
       case 0:
         return <Welcome startGame={fetchNextQuestion}/>;
-      case process.env.REACT_APP_AMOUNT_OF_LEVELS + 1:
+      case (parseInt(process.env.REACT_APP_AMOUNT_OF_LEVELS) + 1):
         clearInterval(this.timer);
-        return <WinGame restartGame={this.restartGame}/>;
+        return <WinGame score={this.props.currentScore} restartGame={this.restartGame}/>;
       default:
-        const displayHelp = this.state.timeLeft < 130;
+        const displayHelp = this.state.timeLeft < 15;
         return (<Fragment>
           <Question question={props.question}
                     onSubmit={fetchNextQuestion}
@@ -110,7 +110,7 @@ class GameContainer extends Component {
           {this.props.hasErrored ? <div>ERROR</div> : null}
           {this.props.isLoading ? <Loading/> : null}
           {isPlayingGame ? this.renderScreen(this.props) : null}
-          {this.state.isGameEnded ? <LostGame restartGame={this.restartGame}/> : null}
+          {this.state.isGameEnded ? <LostGame score={this.props.currentScore} restartGame={this.restartGame}/> : null}
         </div>
       </div>
     );

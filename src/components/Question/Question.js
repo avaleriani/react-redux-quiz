@@ -70,7 +70,7 @@ class Question extends Component {
           {this.state.isWrong ? <div className={styles['is-wrong']}>
             <span role="img" aria-label="thumbs-down">👎</span>
             Wrong answer
-            <span role="img" aria-label="thumbs-down">👎</span>
+            <span role="img" aria-label="thumbs-down"> 👎</span>
           </div> : null}
           <Btn type="submit" text="Submit"/>
         </div>
