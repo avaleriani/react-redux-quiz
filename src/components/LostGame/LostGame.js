@@ -3,15 +3,15 @@ import Btn from "../Btn/Btn";
 import styles from "./styles.module.css";
 
 /**
- * @param {{restartGame: function, score: string}} props
+ * @param {{restartGame: function, score: number}} props
  * @return HTMLElement
  */
 const LostGame = (props) => (
   <div className={styles['lost']}>
     <div className={styles['lost-text']}>
-      <span role="img" aria-label="party-emoji">❌</span>
-      <div>You lost </div>
-      <span role="img" aria-label="party-emoji"> ❌</span>
+      <span role="img" aria-label="cross-emoji">❌</span>
+      <div>Game over </div>
+      <span role="img" aria-label="cross-emoji"> ❌</span>
       <br/>
       <div>Your score: {props.score}</div>
     </div>

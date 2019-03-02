@@ -3,7 +3,7 @@ import Btn from "../Btn/Btn";
 import styles from "./styles.module.css";
 
 /**
- * @param {{restartGame: function, score: string}} props
+ * @param {{restartGame: function, score: number}} props
  * @return HTMLElement
  */
 const WinGame = (props) => (

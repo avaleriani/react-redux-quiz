@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 
 /**
- * @type {{roundPoints: number, timeLeft: number, currentScore: number,
- * highestScore: number, currentLevel: number}} props
+ * @type {function({roundPoints: number, timeLeft: number, currentScore: number, highestScore: number, currentLevel: number}): *} props
  * @return HTMLElement
  */
 const Header = (props) => (
