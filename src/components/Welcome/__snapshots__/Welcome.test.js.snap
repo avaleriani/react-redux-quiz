@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome component renders correctly without props 1`] = `
+<div
+  className="welcome"
+>
+  <img
+    alt="logo"
+    src="/images/logo.png"
+  />
+  <button
+    className="button"
+    onClick={null}
+    type="button"
+  >
+    Start
+  </button>
+</div>
+`;
+
+exports[`Welcome component renders with props 1`] = `
+<div
+  className="welcome"
+>
+  <img
+    alt="logo"
+    src="/images/logo.png"
+  />
+  <button
+    className="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Start
+  </button>
+</div>
+`;

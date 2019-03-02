@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component renders correctly without props 1`] = `
+<div
+  className="loading"
+>
+  <img
+    alt="loading"
+    src="/images/loading.svg"
+  />
+</div>
+`;

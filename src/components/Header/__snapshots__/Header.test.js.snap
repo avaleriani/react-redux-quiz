@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly without props 1`] = `
+<div
+  className="header"
+>
+  <div>
+    <span>
+      <span
+        aria-label="timer"
+        role="img"
+      >
+        ⏲
+      </span>
+      ️ Time left: 
+    </span>
+    <span />
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="joystick"
+        role="img"
+      >
+        🕹️
+      </span>
+       Level: 
+    </span>
+    <span />
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="joystick"
+        role="img"
+      >
+        🎮
+      </span>
+       Current score: 
+    </span>
+    <span />
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="a hundred"
+        role="img"
+      >
+        💯 
+      </span>
+       Highest score: 
+    </span>
+    <span />
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="dice"
+        role="img"
+      >
+        🎲 
+      </span>
+       Round points: 
+    </span>
+    <span />
+  </div>
+</div>
+`;
+
+exports[`Header component renders with props 1`] = `
+<div
+  className="header"
+>
+  <div>
+    <span>
+      <span
+        aria-label="timer"
+        role="img"
+      >
+        ⏲
+      </span>
+      ️ Time left: 
+    </span>
+    <span>
+      50
+    </span>
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="joystick"
+        role="img"
+      >
+        🕹️
+      </span>
+       Level: 
+    </span>
+    <span>
+      2
+    </span>
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="joystick"
+        role="img"
+      >
+        🎮
+      </span>
+       Current score: 
+    </span>
+    <span>
+      12
+    </span>
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="a hundred"
+        role="img"
+      >
+        💯 
+      </span>
+       Highest score: 
+    </span>
+    <span>
+      24
+    </span>
+  </div>
+  <div>
+    <span>
+      <span
+        aria-label="dice"
+        role="img"
+      >
+        🎲 
+      </span>
+       Round points: 
+    </span>
+    <span>
+      2
+    </span>
+  </div>
+</div>
+`;

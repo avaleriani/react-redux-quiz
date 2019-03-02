@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help component renders correctly without props 1`] = `
+<span
+  aria-label="question-mark"
+  className="help hide"
+  role="img"
+>
+  ❓
+</span>
+`;
+
+exports[`Help component renders with props 1`] = `
+<span
+  aria-label="question-mark"
+  className="help show"
+  data-tooltip="test text"
+  role="img"
+>
+  ❓
+</span>
+`;

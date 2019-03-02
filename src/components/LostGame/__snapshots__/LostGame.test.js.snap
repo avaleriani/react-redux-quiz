@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LostGame component renders correctly without props 1`] = `
+<div
+  className="lost"
+>
+  <div
+    className="lost-text"
+  >
+    <span
+      aria-label="cross-emoji"
+      role="img"
+    >
+      ❌
+    </span>
+    <span>
+      Game over 
+    </span>
+    <span
+      aria-label="cross-emoji"
+      role="img"
+    >
+       ❌
+    </span>
+    <br />
+    <div>
+      Your score: 
+    </div>
+  </div>
+  <button
+    className="button"
+    onClick={null}
+    type="button"
+  >
+    Restart
+  </button>
+</div>
+`;
+
+exports[`LostGame component renders with props 1`] = `
+<div
+  className="lost"
+>
+  <div
+    className="lost-text"
+  >
+    <span
+      aria-label="cross-emoji"
+      role="img"
+    >
+      ❌
+    </span>
+    <span>
+      Game over 
+    </span>
+    <span
+      aria-label="cross-emoji"
+      role="img"
+    >
+       ❌
+    </span>
+    <br />
+    <div>
+      Your score: 
+      22
+    </div>
+  </div>
+  <button
+    className="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Restart
+  </button>
+</div>
+`;

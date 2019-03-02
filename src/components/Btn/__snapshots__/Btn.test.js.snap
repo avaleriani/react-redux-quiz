@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Btn component renders correctly without props 1`] = `
+<button
+  className="button"
+  onClick={null}
+  type="button"
+/>
+`;
+
+exports[`Btn component renders with props 1`] = `
+<button
+  className="button"
+  onClick={[Function]}
+  type="button"
+>
+  text
+</button>
+`;

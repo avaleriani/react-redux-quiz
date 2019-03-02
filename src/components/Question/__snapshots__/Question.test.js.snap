@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question component renders correctly without props 1`] = `null`;
+
+exports[`Question component renders with props 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="question"
+  >
+    <div
+      className="question-category"
+    >
+      1979
+    </div>
+    <div
+      className="question-text"
+    >
+      Acronym used to refer to the treaty signed by Brezhnev & Carter in Vienna in June
+    </div>
+  </div>
+  <input
+    autoFocus={true}
+    className="answer"
+    onChange={[Function]}
+    placeholder="Your answer"
+    type="text"
+  />
+  <div
+    className="button-container"
+  >
+    <button
+      className="button"
+      onClick={null}
+      type="submit"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;

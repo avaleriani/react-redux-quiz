@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WinGame component renders correctly without props 1`] = `
+<div
+  className="win"
+>
+  <div
+    className="win-text"
+  >
+    <span
+      aria-label="party-emoji"
+      role="img"
+    >
+      🎉🎉  🏆  🎉🎉
+    </span>
+    <div>
+      Congratulations, you Win!
+    </div>
+    <span
+      aria-label="party-emoji"
+      role="img"
+    >
+      🎉🎉  🏆  🎉🎉
+    </span>
+    <br />
+    <div>
+      Your score: 
+    </div>
+  </div>
+  <button
+    className="button"
+    onClick={null}
+    type="button"
+  >
+    Play again
+  </button>
+</div>
+`;
+
+exports[`WinGame component renders with props 1`] = `
+<div
+  className="win"
+>
+  <div
+    className="win-text"
+  >
+    <span
+      aria-label="party-emoji"
+      role="img"
+    >
+      🎉🎉  🏆  🎉🎉
+    </span>
+    <div>
+      Congratulations, you Win!
+    </div>
+    <span
+      aria-label="party-emoji"
+      role="img"
+    >
+      🎉🎉  🏆  🎉🎉
+    </span>
+    <br />
+    <div>
+      Your score: 
+      55
+    </div>
+  </div>
+  <button
+    className="button"
+    onClick={[Function]}
+    type="button"
+  >
+    Play again
+  </button>
+</div>
+`;
