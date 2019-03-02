@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Btn from "../Btn/Btn";
 
 /**
  * @param {{startGame: function}} props
  * @return HTMLElement
  */
 const Welcome = (props) => (
-  <div>
-    Start quiz
-    <button onClick={props.startGame}>Start</button>
+  <div className={styles['welcome']}>
+    <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
+    <Btn action={props.startGame} text="Start"/>
   </div>
 );
 

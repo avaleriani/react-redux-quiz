@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import Header from '../../components/Header/Header';
 import Welcome from "../../components/Welcome/Welcome";
 import Question from "../../components/Question/Question";
 import LostGame from "../../components/LostGame/LostGame";
 import WinGame from "../../components/WinGame/WinGame";
+import Loading from "../../components/Loading/Loading";
 import { fetchQuestion } from "../../redux/actions/questionAction";
 import { resetGame, userAnswerState } from "../../redux/actions/gameAction";
 import styles from "./styles.module.css";
+import Help from "../../components/Help/Help";
 
 /**
  * @type {{timer: number, step: number, onSubmit: function}} props
@@ -17,7 +19,7 @@ class GameContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeLeft: 30,
+      timeLeft: process.env.REACT_APP_TIME_AVAILABLE,
       isGameEnded: false
     };
 
@@ -33,14 +35,14 @@ class GameContainer extends Component {
 
   startTimer() {
     clearInterval(this.timer);
-    this.setState({ timeLeft: 30, isGameEnded: false });
+    this.setState({ timeLeft: process.env.REACT_APP_TIME_AVAILABLE, isGameEnded: false });
     this.timer = setInterval(this.tick, 1000);
   }
 
   endGame() {
     clearInterval(this.timer);
     this.setState({
-      timeLeft: 30,
+      timeLeft: process.env.REACT_APP_TIME_AVAILABLE,
       isGameEnded: true
     });
   }
@@ -49,7 +51,7 @@ class GameContainer extends Component {
     clearInterval(this.timer);
     this.props.resetGame();
     this.setState({
-      timeLeft: 30,
+      timeLeft: process.env.REACT_APP_TIME_AVAILABLE,
       isGameEnded: false
     });
   }
@@ -87,24 +89,29 @@ class GameContainer extends Component {
         clearInterval(this.timer);
         return <WinGame restartGame={this.restartGame}/>;
       default:
-        return <Question question={props.question}
-                         onSubmit={fetchNextQuestion}
-                         userAnswerState={updateUserAnswerState}/>;
+        const displayHelp = this.state.timeLeft < 130;
+        return (<Fragment>
+          <Question question={props.question}
+                    onSubmit={fetchNextQuestion}
+                    userAnswerState={updateUserAnswerState}/>
+          <Help display={displayHelp} helpText={props.question !== null ? props.question.answer : ''}/>
+        </Fragment>);
     }
   }
 
   render() {
+    const isPlayingGame = !this.props.hasErrored && !this.props.isLoading && !this.state.isGameEnded;
     return (
       <div className={styles['game-container']}>
         <Header timeLeft={this.state.timeLeft} currentScore={this.props.currentScore}
-                highestScore={this.props.highestScore} roundPoints={this.props.roundPoints}/>
+                highestScore={this.props.highestScore} roundPoints={this.props.roundPoints}
+                currentLevel={this.props.step}/>
         <div className={styles['game-screen']}>
           {this.props.hasErrored ? <div>ERROR</div> : null}
-          {this.props.isLoading ? <div>LOADING</div> : null}
-          {!this.props.hasErrored && !this.props.isLoading && !this.state.isGameEnded ? this.renderScreen(this.props) : null}
+          {this.props.isLoading ? <Loading/> : null}
+          {isPlayingGame ? this.renderScreen(this.props) : null}
           {this.state.isGameEnded ? <LostGame restartGame={this.restartGame}/> : null}
         </div>
-        <button onClick={this.restartGame}>Reset Game</button>
       </div>
     );
   }

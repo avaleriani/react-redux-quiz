@@ -1,4 +1,5 @@
 import React from "react";
+import Btn from "../Btn/Btn";
 import styles from "./styles.module.css";
 
 /**
@@ -10,7 +11,7 @@ const LostGame = (props) => (
     <span role="img" aria-label="party-emoji">🐐</span>
     You lost
     <span role="img" aria-label="party-emoji">🐐</span>
-    <button onClick={props.restartGame}>Restart</button>
+    <Btn action={props.restartGame} text="Restart"/>
   </div>
 );
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Btn from "../Btn/Btn";
 
 /**
  * @param {{restartGame: function}} props
@@ -10,7 +11,7 @@ const WinGame = (props) => (
     <span role="img" aria-label="party-emoji">🎉🎉  🏆  🎉🎉</span>
     Congratulations, you Win!
     <span role="img" aria-label="party-emoji">🎉🎉  🏆  🎉🎉</span>
-    <button onClick={props.restartGame}>Play again</button>
+    <Btn action={props.restartGame} text="Play again"/>
   </div>
 );
 

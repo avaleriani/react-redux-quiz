@@ -6,7 +6,8 @@
     display: flex;
     height: 100%;
     margin: 30px auto 0 auto;
-    color: #282c34;
     min-height: 300px;
-    width: 200px;
+    width: 350px;
+    align-items: center;
+    justify-content: center;
 }

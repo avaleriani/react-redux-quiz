@@ -1,0 +1,24 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome img {
+    width: 256px;
+    height: 256px;
+    transform-origin: 50% 50%;
+    opacity: 0;
+    padding-bottom: 50px;
+    animation: grow 700ms forwards;
+}
+
+@keyframes grow {
+    0% {
+        opacity: 0;
+        transform: scale(.0001) rotateZ(-360deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(.99) rotateZ(360deg);
+    }
+}

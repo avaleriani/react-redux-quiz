@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import styles from "./styles.module.css";
+import Btn from "../Btn/Btn";
 import { cleanHtmlText } from "../../Utils/utils";
+import styles from "./styles.module.css";
 
 /**
  * @param {{question: Object, onSubmit: function, userAnswerState: function}} props
@@ -18,26 +19,28 @@ class Question extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onTextUpdate(evt) {
+  onTextUpdate(event) {
     this.setState({
-      answer: evt.target.value
+      answer: event.target.value
     });
   }
 
-  handleSubmit(evt) {
-    evt.preventDefault();
-    //Sometimes the answer come wrapped in HTML.
-    const correctAnswer = cleanHtmlText(this.props.question.answer);
-    if (this.isAnswerCorrect(correctAnswer, this.state.answer)) {
-      this.setState({
-        isWrong: false
-      });
-      this.props.onSubmit(this.props.question.answer, this.state.answer)
-    } else {
-      this.setState({
-        isWrong: true
-      });
-      this.props.userAnswerState(false);
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.state.answer) {
+      //Sometimes the answer come wrapped in HTML.
+      const correctAnswer = cleanHtmlText(this.props.question.answer);
+      if (this.isAnswerCorrect(correctAnswer, this.state.answer)) {
+        this.setState({
+          isWrong: false
+        });
+        this.props.onSubmit(this.props.question.answer, this.state.answer)
+      } else {
+        this.setState({
+          isWrong: true
+        });
+        this.props.userAnswerState(false);
+      }
     }
   };
 
@@ -54,7 +57,6 @@ class Question extends Component {
     return this.props.question ? (
       <form onSubmit={this.handleSubmit}>
         <div className={styles['question']}>
-          <label>QUESTION</label>
           <div className={styles['question-category']}>
             {this.props.question ? this.props.question.category.title : ''}
           </div>
@@ -62,13 +64,18 @@ class Question extends Component {
             {this.props.question.question}
           </div>
         </div>
-        <div className={styles['answer']}>
-          <input type="text" onChange={this.onTextUpdate} autoFocus/>
+        <input placeholder="Your answer" className={styles['answer']} type="text" onChange={this.onTextUpdate}
+               autoFocus/>
+        <div className={styles['button-container']}>
+          {this.state.isWrong ? <div className={styles['is-wrong']}>
+            <span role="img" aria-label="thumbs-down">👎</span>
+            Wrong answer
+            <span role="img" aria-label="thumbs-down">👎</span>
+          </div> : null}
+          <Btn type="submit" text="Submit"/>
         </div>
-        <input type="submit" value="Submit"/>
-        {this.state.isWrong ? <div className={styles['is-wrong']}>Wrong answer</div> : null}
       </form>
-    ) : null;
+    ) : null
   }
 }
 

@@ -9,9 +9,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <Dashboard/>
-        </div>
+        <Dashboard/>
       </Provider>
     );
   }

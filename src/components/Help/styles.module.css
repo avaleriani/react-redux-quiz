@@ -1,0 +1,37 @@
+.help {
+    position: relative;
+    cursor: pointer;
+    top: -170px;
+}
+
+.help:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 6px 10px;
+    top: 1.4em;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 2;
+    border-radius: 2px;
+    transition: opacity 0.2s linear;
+}
+
+.help:hover::after {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
+}
